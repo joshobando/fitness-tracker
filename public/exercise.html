@@ -45,11 +45,11 @@
                         </div>
                         <div class="distance">
                             <label for="distance">Distance</label>
-                            <input type="text" name="distance" id="distance" placeholder="5">
+                            <input type="number" name="distance" id="distance" placeholder="5">
                         </div>
-                        <div class="duration">
+                        <div class="cardio-duration">
                             <label for="duration">Duration</label>
-                            <input type="text" name="duration" placeholder="10">
+                            <input type="number" name="cardio-duration" placeholder="10">
                         </div>
                     </div>
                     <div class="resistance-form">
@@ -59,22 +59,26 @@
                         </div>
                         <div class="weight">
                             <label for="weight">Weight</label>
-                            <input type="text" name="weight" id="weight" placeholder="200">
+                            <input type="number" name="weight" id="weight" placeholder="200">
                         </div>
                         <div class="sets">
                             <label for="sets">Sets</label>
-                            <input type="text" name="sets" id="sets" placeholder="4">
+                            <input type="number" name="sets" id="sets" placeholder="4">
                         </div>
                         <div class="reps">
                             <label for="reps">Reps</label>
-                            <input type="text" name="reps" id="reps" placeholder="10">
+                            <input type="number" name="reps" id="reps" placeholder="10">
+                        </div>
+                        <div class="resistance-duration">
+                            <label for="resistance-duration"></label>
+                            <input type="number" name="resistance-duration" placeholder="10">
                         </div>
                     </div>
-                    <div class="buttons">
+                    <div class="complete-button">
                         <button disabled class="blue complete button">
                             Complete
                         </button>
-                        <button disabled class="positive add another button">
+                        <button disabled class="positive add another button" class="addanother-button">
                             Add New Excercise
                         </button>
                     </div>
@@ -85,7 +89,7 @@
     <div id="toast">
         Workout Added
     </div>
-    <script src="api.js"></script>
+    <script src="/public/api.js"></script>
     <script src="/public/exercise.js"></script>
 </body>
 
