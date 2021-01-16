@@ -1,8 +1,8 @@
-const mongoose = require("moongoose");
+const mongoose = require("mongoose");
 
-const schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
-const workoutSchema = new schema({
+const workoutSchema = new Schema({
     day: {
         type: Date,
         default: () => Date(),
