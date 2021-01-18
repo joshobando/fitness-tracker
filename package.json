@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/joshobando/fitness-tracker/issues"
   },
-  "homepage": "https://github.com/joshobando/fitness-tracker#readme"
+  "homepage": "https://github.com/joshobando/fitness-tracker#readme",
+  "dependencies": {
+    "mongoose": "^5.11.12",
+    "morgan": "^1.10.0"
+  }
 }

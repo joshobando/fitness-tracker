@@ -1,4 +1,4 @@
-const workoutType = document.querySelector("#type");
+const workoutTypeSel = document.querySelector("#type");
 const cardioForm = document.querySelector("#cardio-form")
 const resistanceForm = document.querySelector("#resistance-form");
 const cardioName = document.querySelector("#cardio-name");
@@ -37,10 +37,12 @@ function workoutTypeChange(event){
     if (workoutType === "cardio") {
         cardioForm.classList.remove("d-none");
         resistanceForm.classList.add("d-none");
-    } else if (workoutType == "resistance"){
+    } else if (workoutType === "resistance"){
         resistanceForm.classList.remove("d-none");
         cardioForm.classList.add("d-none");
+    } else{
         resistanceForm.classList.add("d-none");
+        cardioForm.classList.add("d-none");
     }
 
     validateInputs();
@@ -50,14 +52,14 @@ function validateInputs() {
     let isValid = true;
 
     if (workoutType === "resistance") {
-        if (name.value.trim() === ""){
+        if (resistanceName.value.trim() === ""){
             isValid = false;
         }
         
         if(weight.value.trim() === ""){
             isValid = false;
         }
-        if (sets.value.trim() === ""){
+        if(sets.value.trim() === ""){
             isValid = false;
         }
         if(reps.value.trim() === ""){
@@ -67,13 +69,13 @@ function validateInputs() {
             isValid = false;
         }
     }else if (workoutType === "cardio"){
-        if (cardioName.value.trim() === ""){
+        if(cardioName.value.trim() === ""){
             isValid = false
         }
-        if (cardioDuration.value.trim() === ""){
+        if(cardioDuration.value.trim() === ""){
             isValid = false
         }
-        if (distance.value.trim() === ""){
+        if(distance.value.trim() === ""){
             isValid = false
         }
     }
@@ -108,13 +110,13 @@ async function formSubmission(event){
 
     await API.addExercise(workoutData);
     clearInputs();
-    toast.classList.add("success")
+    toast.classList.add("success");
 }
 
 function toastAnimation(){
     toast.removeAttribute("class");
     if (moveaway){
-        location.href = "/public";
+        location.href = "/";
     }
 }
 
@@ -129,11 +131,11 @@ function clearInputs(){
     weight.value = "";
 }
 
-if (workoutType){
-    workoutType.addEventListener("change", workoutTypeChange);
+if (workoutTypeSel){
+    workoutTypeSel.addEventListener("change", workoutTypeChange);
 }
 if(completeButton){
-    completeButton.addEventListener("click", function(even){
+    completeButton.addEventListener("click", function(event){
         moveaway = true;
         formSubmission(event);
     });

@@ -1,4 +1,3 @@
-const { urlencoded } = require("body-parser");
 const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
@@ -19,8 +18,8 @@ mongoose.connect("mongodb://localhost/workout", {
     useFindAndModify:false
 });
 
-app.use(require("./routes/api"));
-app.use(require("./routes/view"));
+app.use(require("./routes/api.js"));
+app.use(require("./routes/view.js"));
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`)
