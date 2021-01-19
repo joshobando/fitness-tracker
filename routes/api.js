@@ -4,7 +4,7 @@ const Workout = require('../models/workout.js');
 
 router.post('/api/workouts', (req, res) => {
     Workout.create({}).then((dbWorkout) => {
-        res.json(dbWorkout)
+        res.text(dbWorkout)
     });
 });
 
@@ -25,7 +25,7 @@ router.put('/api/workouts/:id', ({
         }
     ).then((dbWorkout) => {
         console.log("*****dbWorkout: ", dbWorkout);
-        res.json(dbWorkout)
+        res.text(dbWorkout)
     });
 });
 
@@ -37,7 +37,7 @@ router.get('/api/workouts', (req, res) => {
             },
         },
     }, ]).then((dbWorkout) => {
-        res.json(dbWorkout);
+        res.text(dbWorkout);
     });
 });
 
@@ -55,19 +55,19 @@ router.get("/api/workouts/range", (req, res) => {
         .limit(7)
         .then((dbWorkouts) => {
             console.log(dbWorkouts);
-            res.json(dbWorkouts);
+            res.text(dbWorkouts);
         })
         .catch((err) => {
-            res.json(err);
+            res.text(err);
         });
 });
 
 router.delete("/api/workouts", ({body}, res) => {
     //dont confuse delete function with update function, make sure which one is which
     Workout.findByIdAndDelete(body.id)
-        .then(() => {res.json(true);})
+        .then(() => {res.text(true);})
         .catch((err) =>{
-            res.json(err);
+            res.text(err);
         });
 });
 
