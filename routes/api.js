@@ -2,35 +2,23 @@ const router = require("express").Router();
 const Workout = require("../models/workout");
 
 router.post("/api/workouts", (req, res) => {
-    Workout.create({})
-        .then((dbWorkout) => {
-            res.json(dbWorkout);
-        })
-        .catch((error) => {
-            res.json(error);
-        });
+    Workout.create({}).then((dbWorkout) => { res.json(dbWorkout) });
 });
 
-router.put("/api/workouts/:id", ({
-    body,
-    params
-}, res) => {
-    Workout.findByIdAndDelete(
-            params.id, {
+router.put("/api/workouts/:id", (req, res) => {
+    console.log("*******hitting put route ...");
+    Workout.findByIdAndUpdate(
+            req.params.id, 
+            {
                 $push: {
-                    exercises: body
+                    exercises: req.body
                 }
             }, {
-                new: true,
-                runValidators: true
+                new: true         
             }
-        )
-        .then((dbWorkout) => {
-            res.json(dbWorkout);
-        })
-        .catch((error) => {
-            res.json(error);
-        });
+        ).then((dbWorkout) => { 
+            console.log("*****dbWorkout: ",dbWorkout);
+            res.json(dbWorkout) });
 });
 
 router.get("/api/workouts", (req, res) => {
@@ -40,13 +28,7 @@ router.get("/api/workouts", (req, res) => {
                     $sum: "$exercises.duration",
                 },
             },
-        }, ])
-        .then((dbWorkout) => {
-            res.json(dbWorkout);
-        })
-        .catch((error) => {
-            res.json(error);
-        });
+        }, ]).then((dbWorkout) => {res.json(dbWorkout);});
 });
 
 router.get("/api/workouts/range", (req, res) => {
@@ -57,28 +39,14 @@ router.get("/api/workouts/range", (req, res) => {
                 },
             },
         }, ])
-        .sort({
-            _id: -1
-        })
-        .limit(7)
-        .then((dbWorkouts) => {
-            res.json(dbWorkouts);
-        })
-        .catch((err) => {
-            res.json(err);
-        });
+        .then((dbWorkouts) => {res.json(dbWorkouts);});
 });
 
 router.delete("/api/workouts", ({
     body
 }, res) => {
     Workout.findByIdAndDelete(body.id)
-        .then(() => {
-            res.json(true);
-        })
-        .catch((err) => {
-            res.json(err);
-        });
-})
+        .then(() => {res.json(true);});
+});
 
 module.exports = router;
