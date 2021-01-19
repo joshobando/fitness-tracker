@@ -25,4 +25,8 @@ mongoose.connect("mongodb://localhost/workout", {
 app.use(require("./routes/api.js"));
 app.use(require("./routes/view.js"));
 
-app.listen(PORT, () => {console.log(`App running on port ${PORT}!`);});
+// app.listen(PORT, () => {console.log(`App running on port ${PORT}!`);});
+var server = app.listen(process.env.PORT || 5000, function () {
+    var port = server.address().port;
+    console.log("Express is working on port " + port);
+});
