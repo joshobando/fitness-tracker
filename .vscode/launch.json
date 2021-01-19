@@ -13,7 +13,7 @@
             ],
             "program": "${workspaceFolder}\\server.js"
         },
-        {
+        { //debugging because there was a problem with the api, said it could not be found
             "type": "node",
             "request": "launch",
             "name": "Launch API file",

@@ -17,6 +17,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+//adding uri to connect db to heroku deployment
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
     useFindAndModify: false

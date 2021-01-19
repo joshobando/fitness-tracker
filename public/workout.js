@@ -80,5 +80,5 @@ function renderNoWorkoutText() {
     p.appendChild(strong);
     container.appendChild(p);
 }
-
+//init function wasnt working
 initWorkout();
