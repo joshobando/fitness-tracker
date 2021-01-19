@@ -12,6 +12,12 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\server.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch API file",
+            "program": "${workspaceFolder}/public/api.js"
         }
     ]
 }
