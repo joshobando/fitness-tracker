@@ -146,9 +146,7 @@ if (completeButton) {
         handleFormSubmit(event);
     });
 }
-if (addButton) {
-    addButton.addEventListener("click", handleFormSubmit);
-}
+if (addButton) {addButton.addEventListener("click", handleFormSubmit);}
 toast.addEventListener("animationend", handleToastAnimationEnd);
 
 document

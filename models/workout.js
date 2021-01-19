@@ -11,10 +11,12 @@ const workoutSchema = new Schema({
         {
             type:{
                 type: String,
+                trim: true,
                 required: "Please eneter type",
             },
             name:{
                 type: String,
+                trim:true,
                 required: "Please eneter name",
             },
             duration:{
