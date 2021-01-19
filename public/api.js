@@ -2,7 +2,7 @@ const API = {
     async getLastWorkout() {
         let res;
         try {res = await fetch("/api/workouts");} catch (err) {console.log(err)}
-        const json = await res.json();
+        const json = await res.text();
 
         return json[json.length - 1];
     },
@@ -26,7 +26,7 @@ const API = {
             headers: {"Content-Type": "application/json"}
         });
 
-        const json = await res.json();
+        const json = await res.text();
 
         return json;
     },
